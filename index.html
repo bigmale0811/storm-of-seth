@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Storm of Seth</title>
+    <style>
+        /* 全域重置 */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* HTML 根節點確保全高填充 */
+        html {
+            height: 100%;
+        }
+
+        /* Body：埃及黃金主題放射狀漸層背景 */
+        body {
+            height: 100%;
+            min-height: 100vh;
+            background: radial-gradient(
+                ellipse at center,
+                #2d1b4e 0%,
+                #1a0a2e 40%,
+                #0d0619 70%
+            );
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Arial Black', 'Arial', sans-serif;
+            /* 防止行動裝置長按選取 */
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 遊戲畫布容器：自然居中、相對定位供疊層使用 */
+        #game-container {
+            position: relative;
+            display: inline-block;
+            /* 讓 canvas 不產生多餘底部空白 */
+            line-height: 0;
+        }
+
+        /* PixiJS canvas 元素 — 自適應縮放確保整個畫面可見 */
+        #game-container canvas {
+            display: block;
+            width: 100vw;
+            height: calc(100vw * 720 / 1280);  /* 維持 16:9 比例 */
+            max-height: 100vh;
+            max-width: calc(100vh * 1280 / 720); /* 橫式時以高度為基準 */
+            object-fit: contain;
+        }
+    </style>
+  <script type="module" crossorigin src="./assets/index-_t-ObFQq.js"></script>
+</head>
+<body>
+    <div id="game-container"></div>
+</body>
+</html>

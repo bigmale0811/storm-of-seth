@@ -1,0 +1,220 @@
+{
+    "game": {
+        "name": "storm-of-seth",
+        "displayName": "Storm of Seth",
+        "type": "cascade",
+        "grid": { "cols": 6, "rows": 5 },
+        "rtp": 96.89,
+        "maxMultiplier": 51000,
+        "minBet": 1,
+        "maxBet": 1000
+    },
+    "symbols": [
+        {
+            "id": "s1",
+            "name": "荷魯斯之眼",
+            "type": "regular",
+            "image": "S1.png",
+            "weight": 920,
+            "payouts": { "8": 200, "10": 500, "12": 1000 }
+        },
+        {
+            "id": "s2",
+            "name": "阿努比斯",
+            "type": "regular",
+            "image": "S2.png",
+            "weight": 898,
+            "payouts": { "8": 50, "10": 200, "12": 500 }
+        },
+        {
+            "id": "s3",
+            "name": "聖甲蟲",
+            "type": "regular",
+            "image": "S3.png",
+            "weight": 1149,
+            "payouts": { "8": 40, "10": 100, "12": 300 }
+        },
+        {
+            "id": "s4",
+            "name": "安卡",
+            "type": "regular",
+            "image": "S4.png",
+            "weight": 1220,
+            "payouts": { "8": 30, "10": 40, "12": 240 }
+        },
+        {
+            "id": "s5",
+            "name": "權杖",
+            "type": "regular",
+            "image": "S5.png",
+            "weight": 1105,
+            "payouts": { "8": 20, "10": 30, "12": 200 }
+        },
+        {
+            "id": "s6",
+            "name": "藍寶石",
+            "type": "regular",
+            "image": "S6.png",
+            "weight": 1083,
+            "payouts": { "8": 16, "10": 24, "12": 160 }
+        },
+        {
+            "id": "s7",
+            "name": "綠寶石",
+            "type": "regular",
+            "image": "S7.png",
+            "weight": 1132,
+            "payouts": { "8": 10, "10": 20, "12": 100 }
+        },
+        {
+            "id": "s8",
+            "name": "紅寶石",
+            "type": "regular",
+            "image": "S8.png",
+            "weight": 1143,
+            "payouts": { "8": 8, "10": 18, "12": 80 }
+        },
+        {
+            "id": "s9",
+            "name": "紫寶石",
+            "type": "regular",
+            "image": "S9.png",
+            "weight": 1088,
+            "payouts": { "8": 5, "10": 15, "12": 40 }
+        },
+        {
+            "id": "t1",
+            "name": "倍率符號（主要）",
+            "type": "multiplier",
+            "image": "t1.png",
+            "payouts": {},
+            "multiplierValue": 2,
+            "weight": 91,
+            "isRare": false
+        },
+        {
+            "id": "t2",
+            "name": "倍率 3x（稀有）",
+            "type": "multiplier",
+            "image": "t2.png",
+            "payouts": {},
+            "multiplierValue": 3,
+            "weight": 6,
+            "isRare": true
+        },
+        {
+            "id": "t3",
+            "name": "倍率 5x（極稀有）",
+            "type": "multiplier",
+            "image": "t3.png",
+            "payouts": {},
+            "multiplierValue": 5,
+            "weight": 11,
+            "isRare": true
+        },
+        {
+            "id": "jp",
+            "name": "累積獎金",
+            "type": "bonus",
+            "image": "jp.png",
+            "payouts": {}
+        },
+        {
+            "id": "scatter",
+            "name": "免費旋轉",
+            "type": "scatter",
+            "image": "scatter.png",
+            "payouts": { "4": 60, "5": 100, "6": 2000 }
+        }
+    ],
+    "paytable": {
+        "evaluationType": "count",
+        "minClusterSize": 8,
+        "entries": [
+            { "symbolId": "s1", "minCount": 8,  "multiplier": 200  },
+            { "symbolId": "s1", "minCount": 10, "multiplier": 500  },
+            { "symbolId": "s1", "minCount": 12, "multiplier": 1000 },
+            { "symbolId": "s2", "minCount": 8,  "multiplier": 50   },
+            { "symbolId": "s2", "minCount": 10, "multiplier": 200  },
+            { "symbolId": "s2", "minCount": 12, "multiplier": 500  },
+            { "symbolId": "s3", "minCount": 8,  "multiplier": 40   },
+            { "symbolId": "s3", "minCount": 10, "multiplier": 100  },
+            { "symbolId": "s3", "minCount": 12, "multiplier": 300  },
+            { "symbolId": "s4", "minCount": 8,  "multiplier": 30   },
+            { "symbolId": "s4", "minCount": 10, "multiplier": 40   },
+            { "symbolId": "s4", "minCount": 12, "multiplier": 240  },
+            { "symbolId": "s5", "minCount": 8,  "multiplier": 20   },
+            { "symbolId": "s5", "minCount": 10, "multiplier": 30   },
+            { "symbolId": "s5", "minCount": 12, "multiplier": 200  },
+            { "symbolId": "s6", "minCount": 8,  "multiplier": 16   },
+            { "symbolId": "s6", "minCount": 10, "multiplier": 24   },
+            { "symbolId": "s6", "minCount": 12, "multiplier": 160  },
+            { "symbolId": "s7", "minCount": 8,  "multiplier": 10   },
+            { "symbolId": "s7", "minCount": 10, "multiplier": 20   },
+            { "symbolId": "s7", "minCount": 12, "multiplier": 100  },
+            { "symbolId": "s8", "minCount": 8,  "multiplier": 8    },
+            { "symbolId": "s8", "minCount": 10, "multiplier": 18   },
+            { "symbolId": "s8", "minCount": 12, "multiplier": 80   },
+            { "symbolId": "s9", "minCount": 8,  "multiplier": 5    },
+            { "symbolId": "s9", "minCount": 10, "multiplier": 15   },
+            { "symbolId": "s9", "minCount": 12, "multiplier": 40   }
+        ]
+    },
+    "symbolPool": {
+        "regularPoolSize": 7,
+        "scatterProbability": 0.0154,
+        "totalMultiplierProbability": 0.0108,
+        "multiplierWeights": [
+            { "symbolId": "t1", "weight": 91 },
+            { "symbolId": "t2", "weight": 6 },
+            { "symbolId": "t3", "weight": 11 }
+        ]
+    },
+    "winTiers": [
+        { "id": "nice",       "label": "Nice Win",       "minMultiplier": 1,    "maxMultiplier": 19    },
+        { "id": "big",        "label": "Big Win",        "minMultiplier": 20,   "maxMultiplier": 49    },
+        { "id": "super",      "label": "Super Win",      "minMultiplier": 50,   "maxMultiplier": 99    },
+        { "id": "mega",       "label": "Mega Win",       "minMultiplier": 100,  "maxMultiplier": 299   },
+        { "id": "ultra",      "label": "Ultra Win",      "minMultiplier": 300,  "maxMultiplier": 999   },
+        { "id": "legendary",  "label": "Legendary Win",  "minMultiplier": 1000, "maxMultiplier": 999999 }
+    ],
+    "features": {
+        "scatter": {
+            "enabled": true,
+            "symbolId": "scatter",
+            "triggerCount": 4,
+            "freeSpinsAwarded": 15
+        },
+        "cascade": {
+            "enabled": true,
+            "maxChain": 6,
+            "fillFromTop": true
+        },
+        "multiplier": {
+            "enabled": true,
+            "accumulateInCascade": true,
+            "baseValues": [2, 3, 4, 6, 10, 15],
+            "baseValueWeights": [50, 25, 12, 8, 4, 1],
+            "upgradeChain": {
+                "2": 3,
+                "3": 4,
+                "4": 6,
+                "6": 10,
+                "10": 15
+            },
+            "isRareProbability": 0.5
+        },
+        "freeSpin": {
+            "enabled": true,
+            "baseSpins": 15,
+            "retriggerEnabled": true,
+            "retriggerSpins": 5
+        }
+    },
+    "assets": {
+        "basePath": "./assets/",
+        "imagesPath": "./assets/images/",
+        "audioPath": "./assets/audio/",
+        "spritesPath": "./assets/sprites/"
+    }
+}

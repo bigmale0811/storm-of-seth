@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>Storm of Seth - Audio Tester</title>
+<style>
+body { background: #1a0a2e; color: #fff; font-family: Arial; padding: 20px; }
+h1 { color: #ffd700; }
+h2 { color: #88ccff; margin-top: 30px; }
+.row { display: flex; align-items: center; gap: 12px; margin: 8px 0; padding: 8px; background: #0d0619; border-radius: 8px; }
+.row:hover { background: #1a1040; }
+button { background: #6b2fa0; color: #fff; border: 1px solid #ffd700; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; min-width: 60px; }
+button:hover { background: #8b4fc0; }
+button.stop { background: #8b0000; }
+.info { font-size: 13px; color: #aaa; }
+.loud { color: #ff6666; }
+.medium { color: #ffcc66; }
+.quiet { color: #66ff66; }
+.id { color: #888; font-family: monospace; font-size: 11px; }
+.current-mapping { color: #ffd700; font-weight: bold; font-size: 12px; }
+select { background: #1a1040; color: #ffd700; border: 1px solid #8b6914; padding: 4px 8px; border-radius: 4px; font-size: 13px; }
+</style>
+</head>
+<body>
+<h1>🔊 Storm of Seth 音效測試器</h1>
+<p>點擊播放按鈕試聽每個音效，幫助識別正確的映射關係</p>
+
+<h2>📋 短音效 (&lt; 2 秒)</h2>
+<div id="short-sounds"></div>
+
+<h2>🎵 長音效 / 背景音樂 (&gt; 2 秒)</h2>
+<div id="long-sounds"></div>
+
+<h2>🎯 當前映射對照</h2>
+<div id="mapping"></div>
+
+<script>
+const audioFiles = [
+  { file: '00503f67-e89d-4480-84eb-e7975ba04c4f.mp3', size: '9.5KB', dur: '~0.5s', vol: 'quiet', mean: -21.3 },
+  { file: 'a6f1eb0e-0e10-4014-804e-2a6cb45d2f13.mp3', size: '22KB', dur: '0.57s', vol: 'quiet', mean: -20.1 },
+  { file: 'f40deb56-5550-42d8-8c4a-c60e80f1cc60.mp3', size: '16KB', dur: '1.00s', vol: 'medium', mean: -14.3 },
+  { file: 'dabb503d-9814-421c-8182-dacea8850bdf.mp3', size: '27KB', dur: '0.68s', vol: 'medium', mean: -13.2 },
+  { file: '649269b6-f3b1-451f-bbb8-98e56cde039f.mp3', size: '35KB', dur: '0.89s', vol: 'quiet', mean: -21.7 },
+  { file: 'a00d9f3d-b0fc-4fe9-88ad-697eb17f1c66.mp3', size: '35KB', dur: '0.89s', vol: 'loud', mean: -12.2 },
+  { file: 'e869ac49-6ccb-4ca7-90f7-538a851b4582.mp3', size: '39KB', dur: '0.99s', vol: 'quiet', mean: -22.9 },
+  { file: '0ab46fa3-d3be-4820-b05e-ed9f1dd45283.mp3', size: '51KB', dur: '1.30s', vol: 'loud', mean: -9.5 },
+  { file: 'b0556948-58b3-4dcd-b63d-58c3e4a51538.mp3', size: '59KB', dur: '1.45s', vol: 'loud', mean: -11.7 },
+  { file: 'ad8beb36-2748-4b38-87c3-68f5f5508248.mp3', size: '68KB', dur: '1.69s', vol: 'loud', mean: -8.9 },
+  { file: '137a69ad-8af6-429c-b2c4-5918bae462fb.mp3', size: '66KB', dur: '1.70s', vol: 'quiet', mean: -22.0 },
+  { file: 'd5772131-dcfd-4b31-b111-ded1831ed5bc.mp3', size: '78KB', dur: '1.98s', vol: 'medium', mean: -18.3 },
+  { file: '41f85ec1-88e4-4abb-b771-7dbb9960062b.mp3', size: '189KB', dur: '12.0s', vol: 'medium', mean: -13.5 },
+  { file: '387e5f4f-e258-43d8-8704-d824aab2e708.mp3', size: '289KB', dur: '14.8s', vol: 'loud', mean: -10.9 },
+  { file: 'd72945a2-f402-41ae-8da0-b20d9ebfe3a7.mp3', size: '549KB', dur: '14.0s', vol: 'loud', mean: -10.7 },
+  { file: '575b3c0d-0502-4c02-80ea-9f69eee98399.mp3', size: '470KB', dur: '30.0s', vol: 'quiet', mean: -21.6 },
+];
+
+let currentAudio = null;
+
+function play(file) {
+  if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+  currentAudio = new Audio('assets/audio/' + file);
+  currentAudio.play();
+}
+
+function stopAll() {
+  if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+}
+
+const shortDiv = document.getElementById('short-sounds');
+const longDiv = document.getElementById('long-sounds');
+
+audioFiles.forEach((a, i) => {
+  const row = document.createElement('div');
+  row.className = 'row';
+  const volClass = a.vol === 'loud' ? 'loud' : a.vol === 'medium' ? 'medium' : 'quiet';
+  row.innerHTML = `
+    <button onclick="play('${a.file}')">▶ Play</button>
+    <button class="stop" onclick="stopAll()">■</button>
+    <span class="info">${a.dur} | ${a.size} | <span class="${volClass}">${a.mean}dB ${a.vol}</span></span>
+    <span class="id">${a.file.split('-')[0]}</span>
+  `;
+  (parseFloat(a.dur) > 2 ? longDiv : shortDiv).appendChild(row);
+});
+</script>
+</body>
+</html>
